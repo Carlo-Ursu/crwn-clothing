@@ -1,37 +1,45 @@
-import { useState } from 'react';
-import './sign-up.styles.scss';
-import { ReactComponent as CrwnLogo} from "../../assets/crown.svg";
-import LoadingSpinner from "./sign-up-loading/sign-up-loading.component";
+import { useState, useContext } from 'react';
+import './loginInterface.styles.scss';
+import { useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
-    const mockUser = { username: 'username', password: '123pass' };
+
+
+import { UserContext } from "../../contexts/user.context";
+
+const LoginInterface = () => {
+    const mockUsers = [
+        { username: 'user1', password: '1111' },
+        { username: 'user2', password: '2222' },
+        { username: 'user3', password: '3333' },
+    ];
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    const { setCurrentUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
-    const handleSignIn = (e) => {
+    const handleSignUp = (e) => {
         e.preventDefault();
 
-        if (username === mockUser.username && password === mockUser.password) {
+        const matchedUser = mockUsers.find((user) => user.username === username && user.password === password);
+        if (matchedUser) {
+            setCurrentUser(matchedUser);
             // Redirect to the home page
-            window.location.href = '/nav';
             localStorage.setItem('isLoggedIn', true);
+            localStorage.setItem('currentUsername', matchedUser.username)
+            navigate('/');
+
+
         } else {
-            setError('Invalid username or password');
+            setError('Wrong username or password!');
         }
     };
-    if(localStorage.getItem('isLoggedIn')){
-            setTimeout(() => window.location.href = '/nav', 3000)
-            return (
-                <LoadingSpinner />
-            );
-    }
-    else {
+
         return (
-            <div className='signIn'>
-                <CrwnLogo className='logo'/>
-                <form onSubmit={handleSignIn} className='form'>
+            <div className='login'>
+                <form className='form'>
                     <div className='formGroup'>
                         <label htmlFor="username" className='label'>Username:</label>
                         <input
@@ -52,12 +60,13 @@ const SignIn = () => {
                             className='input'
                         />
                     </div>
+                    <div className='buttons'>
+                    <button className='button' onClick={handleSignUp}>Sign in</button>
+                    </div>
                     {error && <div className='error'>{error}</div>}
-                    <button type="submit" className='button'>Sign In</button>
                 </form>
             </div>
         );
-    };
 
 }
-export default SignIn;
+export default LoginInterface;

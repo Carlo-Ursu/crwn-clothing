@@ -1,5 +1,5 @@
 import React from 'react';
-import './sign-up-loading.styles.scss';
+import './loginInterface-loading.styles.scss';
 
 const LoadingSpinner = () => {
     return (
