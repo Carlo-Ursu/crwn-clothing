@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 import { UserContext } from "../../contexts/user.context";
+import Button from '../../components/button/button.component'
 
 const LoginInterface = () => {
     const mockUsers = [
@@ -61,7 +62,7 @@ const LoginInterface = () => {
                         />
                     </div>
                     <div className='buttons'>
-                    <button className='button' onClick={handleSignUp}>Sign in</button>
+                    <Button buttonType='inverted' onClick={handleSignUp}>Sign in</Button>
                     </div>
                     {error && <div className='error'>{error}</div>}
                 </form>
