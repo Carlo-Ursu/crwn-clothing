@@ -2,8 +2,6 @@ import { useState, useContext } from 'react';
 import './loginInterface.styles.scss';
 import { useNavigate } from 'react-router-dom';
 
-
-
 import { UserContext } from "../../contexts/user.context";
 import Button from '../../components/button/button.component'
 
@@ -28,7 +26,6 @@ const LoginInterface = () => {
         if (matchedUser) {
             setCurrentUser(matchedUser);
             // Redirect to the home page
-            localStorage.setItem('isLoggedIn', true);
             localStorage.setItem('currentUsername', matchedUser.username)
             navigate('/');
 
