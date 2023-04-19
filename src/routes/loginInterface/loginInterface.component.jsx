@@ -1,9 +1,10 @@
 import {useState, useContext} from 'react';
-import './loginInterface.styles.scss';
 import {useNavigate} from 'react-router-dom';
 
 import {UserContext} from "../../contexts/user.context";
-import Button from '../../components/button/button.component'
+
+import {BaseButton} from "../../components/button/button.styles";
+import {Login, Form, ButtonContainer, FormGroup, Label, Input, Error} from "./loginInterface.styles";
 
 const LoginInterface = () => {
     const mockUsers = [
@@ -36,34 +37,34 @@ const LoginInterface = () => {
     };
 
     return (
-        <div className='login'>
-            <form className='form'>
-                <div className='formGroup'>
-                    <label htmlFor="username" className='label'>Username:</label>
-                    <input
+        <Login>
+            <Form>
+                <FormGroup>
+                    <Label htmlFor="username" className='label'>Username:</Label>
+                    <Input
                         type="text"
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         className='input'
                     />
-                </div>
-                <div className='formGroup'>
-                    <label htmlFor="password" className='label'>Password:</label>
-                    <input
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor="password" className='label'>Password:</Label>
+                    <Input
                         type="password"
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className='input'
                     />
-                </div>
-                <div className='buttons'>
-                    <Button buttonType='inverted' onClick={handleSignUp}>Sign in</Button>
-                </div>
-                {error && <div className='error'>{error}</div>}
-            </form>
-        </div>
+                </FormGroup>
+                <ButtonContainer>
+                    <BaseButton buttonType='inverted' onClick={handleSignUp}>Sign in</BaseButton>
+                </ButtonContainer>
+                {error && <Error>{error}</Error>}
+            </Form>
+        </Login>
     );
 
 }
