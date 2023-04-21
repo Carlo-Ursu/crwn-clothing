@@ -6,19 +6,24 @@ import './navigation.styles'
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
-import {UserContext} from "../../contexts/user.context";
+import {setCurrentUser} from '../../store/user/user.action';
 import {CartContext} from "../../contexts/cart.context";
 
 import {NavigationContainer, LogoContainer, NavLinks, NavLink} from "./navigation.styles";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCurrentUser} from "../../store/user/user.selector";
 
 
 const Navigation = () => {
-    const {setCurrentUser} = useContext(UserContext);
+    const currentUser = useSelector(selectCurrentUser)
     const {isCartOpen} = useContext(CartContext);
+    const dispatch = useDispatch();
+
 
     const signOutHandler = () => {
         localStorage.removeItem('currentUsername');
-        setCurrentUser(null);
+        dispatch(setCurrentUser(null));
+
     }
 
 
@@ -28,14 +33,14 @@ const Navigation = () => {
                 <LogoContainer to='/'>
                     <CrwnLogo/>
                 </LogoContainer>
-                {localStorage.getItem('currentUsername') !== null &&
-                    <h3>Welcome back, {localStorage.getItem('currentUsername')}</h3>}
+                {currentUser !== null &&
+                    <h3>Welcome back, {currentUser}</h3>}
                 <NavLinks>
                     <NavLink to='/shop'>
                         SHOP
                     </NavLink>
                     {
-                        localStorage.getItem('currentUsername') !== null ?
+                        currentUser !== null ?
                             <NavLink to='/login' onClick={signOutHandler}> SIGN OUT </NavLink>
                             : <NavLink to='/login'> SIGN IN </NavLink>
                     }
