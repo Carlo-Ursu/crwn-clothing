@@ -13,7 +13,7 @@ import {NavigationContainer, LogoContainer, NavLinks, NavLink} from "./navigatio
 
 
 const Navigation = () => {
-    const {setCurrentUser, currentUser} = useContext(UserContext);
+    const {setCurrentUser} = useContext(UserContext);
     const {isCartOpen} = useContext(CartContext);
 
     const signOutHandler = () => {
@@ -29,7 +29,7 @@ const Navigation = () => {
                     <CrwnLogo/>
                 </LogoContainer>
                 {localStorage.getItem('currentUsername') !== null &&
-                    <h3>Welcome back, {currentUser}</h3>}
+                    <h3>Welcome back, {localStorage.getItem('currentUsername')}</h3>}
                 <NavLinks>
                     <NavLink to='/shop'>
                         SHOP
