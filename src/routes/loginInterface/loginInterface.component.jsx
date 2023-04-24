@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import {setCurrentUser} from '../../store/user/user.action';

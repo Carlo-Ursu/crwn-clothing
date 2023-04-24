@@ -11,8 +11,6 @@ import {setCurrentUser} from "./store/user/user.action";
 import {useEffect} from "react";
 
 const App = () => {
-
-    console.log(localStorage.getItem('currentUsername'));
     const dispatch = useDispatch();
 
     useEffect(() => {
