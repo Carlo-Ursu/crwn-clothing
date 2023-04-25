@@ -1,11 +1,30 @@
 
 # CRWN Clothing
 
-Welcome to **CRWN Clothing**! This is a shopping page where you can find a wide variety of clothes for men, women, and children. Our website has a simple and user-friendly interface to help you find what you are looking for quickly and easily.
+# Tech stack
+- React
+- JavaScript
+- HTML
+- CSS
+
+## React Hooks and Libraries
+
+In addition to React, I also used various React hooks and libraries, including:
+
+- useState
+- useContext
+- useEffect
+- useNavigate
+- styled-components
+- Redux
+
+By using these technologies and libraries, I was able to create a functional and user-friendly shopping website. I hope you enjoy browsing my website and exploring its features!
+
+Welcome to **CRWN Clothing**! This is a shopping page where you can find a wide variety of clothes for men, women, and children. This project has a simple and user-friendly interface to help users find what they are looking for quickly and easily.
 
 ## Getting Started
 
-The first page you will see is the sign-in page. Once you successfully login, you will be directed to the homepage where you can browse our collection of clothing. The homepage displays the main categories of items, making it easy for you to navigate and find what you're looking for.
+The first page users will see is the sign-in page. Once successfully logged in, users will be directed to the homepage where they can browse the collections of clothing. The homepage displays the main categories of items, making it easy for users to navigate and find what they are looking for.
 
 
 <img width="1204" alt="Screenshot 2023-04-25 at 13 42 00" src="https://user-images.githubusercontent.com/104988385/234254360-3bf4db4a-01ad-4b57-918f-dfd48e032976.png">
@@ -15,14 +34,14 @@ The first page you will see is the sign-in page. Once you successfully login, yo
 
 ## Shop
 
-If you're looking for a quick overview of what we have in stock, visit our shop page. Here, you'll find a preview of four items from each of the categories we offer.
+The shop page is where a preview of the categories is displayed, to make the search easier for the user.
 
 https://user-images.githubusercontent.com/104988385/234260216-a007b80a-9520-4e08-9a72-24eecfe62d50.mov
 
 
 ## Cart and Checkout
 
-After finding the items you like, you can easily add them to your cart. You can view your cart at any time and modify it as needed. When you're ready to checkout, simply click on the checkout button and follow the instructions.
+Also, there is a cart feature, where users can add items to cart, followed by a checkout page, where users can modify the cart's structure and see the final total value.
 
 <img width="1206" alt="Screenshot 2023-04-25 at 13 44 30" src="https://user-images.githubusercontent.com/104988385/234254835-62bbf5e3-25d0-4e83-ac4f-d43f3dd53ca0.png">
 
@@ -30,13 +49,7 @@ After finding the items you like, you can easily add them to your cart. You can 
 <img width="1190" alt="Screenshot 2023-04-25 at 13 44 42" src="https://user-images.githubusercontent.com/104988385/234255282-12c57b73-2e09-4084-83da-f589453107e1.png">
 
 
-At **CRWN Clothing**, we pride ourselves on offering quality clothing at affordable prices. We hope you enjoy shopping with us!
-
-
-The project is made using React, HTML, CSS and JS.
-To better suit the needs that I envisioned, I used React hooks such as: useNavigate, useState, useEffect and Redux.
-
-Also, for designing the components, I used styled-components from React
+I envisioned **CRWN Clothing** to be the starting point to a shopping website, to better practice my React knowledge and web development skills.
 
 
 
