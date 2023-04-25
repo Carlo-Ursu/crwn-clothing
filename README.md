@@ -4,16 +4,6 @@ It loads with a sign in page
 <img width="1204" alt="Screenshot 2023-04-25 at 13 42 00" src="https://user-images.githubusercontent.com/104988385/234254360-3bf4db4a-01ad-4b57-918f-dfd48e032976.png">
 
 
-Momentarily it works with some hardcoded users: 
-    
-    id: user1
-    password: 1111
-
-    id: user2
-    password: 2222
-
-    id: user3
-    password: 3333
     
 After login, there is a main page where the user can find all the categories in the shop
 
