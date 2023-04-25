@@ -49,7 +49,7 @@ Also, there is a cart feature, where users can add items to cart, followed by a 
 <img width="1190" alt="Screenshot 2023-04-25 at 13 44 42" src="https://user-images.githubusercontent.com/104988385/234255282-12c57b73-2e09-4084-83da-f589453107e1.png">
 
 
-I envisioned **CRWN Clothing** to be the starting point to a shopping website, to better practice my React knowledge and web development skills.
+I envisioned **CRWN Clothing** to be the starting point of a shopping website, to better practice my React knowledge and web development skills.
 
 
 
