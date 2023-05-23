@@ -1,32 +1,51 @@
-import './App.css';
-import {Routes, Route} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import Home from "./routes/home/home.component";
-import Navigation from "./routes/navigation/navigation.component";
-import SignUp from "./routes/loginInterface/loginInterface.component";
-import Shop from "./routes/shop/shop.component";
-import Checkout from "./routes/checkout/checkout.component";
-import {useDispatch} from "react-redux";
-import {setCurrentUser} from "./store/user/user.action";
-import {useEffect} from "react";
+import { Routes, Route } from 'react-router-dom';
+
+import {
+  onAuthStateChangedListener,
+  createUserDocumentFromAuth,
+} from './utils/firebase/firebase.utils';
+import Home from './routes/home/home.component';
+import Navigation from './routes/navigation/navigation.component';
+import Authentication from './routes/authentication/authentication.component';
+import Shop from './routes/shop/shop.component';
+import Checkout from './routes/checkout/checkout.component';
+import { setCurrentUser } from './store/user/user.action';
+
+import { addCollectionAndDocuments } from './utils/firebase/firebase.utils';
+
+import SHOP_DATA from './shop-data';
 
 const App = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(setCurrentUser(localStorage.getItem('currentUsername')));
-    }, [dispatch]);
+  useEffect(() => {
+    addCollectionAndDocuments('categories', SHOP_DATA);
+  }, []);
 
-    return (
-        <Routes>
-            <Route path='/' element={<Navigation/>}>
-                <Route index element={<Home/>}/>
-                <Route path='shop/*' element={< Shop/>}/>
-                <Route path='login' element={<SignUp/>}/>
-                <Route path='checkout' element={<Checkout/>}/>
-            </Route>
-        </Routes>
-    )
-}
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  }, []);
+
+  return (
+    <Routes>
+      <Route path='/' element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path='shop/*' element={<Shop />} />
+        <Route path='auth' element={<Authentication />} />
+        <Route path='checkout' element={<Checkout />} />
+      </Route>
+    </Routes>
+  );
+};
 
 export default App;
