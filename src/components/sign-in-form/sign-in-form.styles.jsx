@@ -4,7 +4,8 @@ export const SignInContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 380px;
-
+  align-items: center;
+  padding-top: 100px;
   h2 {
     margin: 10px 0;
   }

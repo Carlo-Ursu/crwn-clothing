@@ -1,4 +1,5 @@
 import { ReactComponent as GmailLogo } from '../../assets/google.svg';
+import { useNavigate } from 'react-router-dom';
 
 
 import {
@@ -10,9 +11,12 @@ import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
 
 const SignInForm = () => {
 
+  const navigation = useNavigate();
+
   const signInWithGoogle = async () => {
     try {
       await signInWithGooglePopUp();
+      navigation('/shop');  
     } catch (error) {
       console.log('user sign in failed', error);
     }
@@ -22,10 +26,10 @@ const SignInForm = () => {
   return (
     <SignInContainer>
       <h2>Welcome to CRWN CLOTHING</h2>
-      <span>Sign in with your email and password</span>
+      <span>Sign in with Gmail</span>
       <form>
         <ButtonsContainer>
-          <GmailLogo onClick={signInWithGoogle} />
+            <GmailLogo onClick={signInWithGoogle} />
         </ButtonsContainer>
       </form>
     </SignInContainer>
