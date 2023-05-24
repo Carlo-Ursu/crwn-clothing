@@ -1,39 +1,30 @@
+import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import CategoriesPreview from '../categories-preview/categories-preview.component';
-import Category from "../category/category.component";
-
-import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect, Fragment } from 'react';
-import { useSelector } from "react-redux";
-import { fetchCategoriesStart } from '../../store/categories/category.action';
-import Spinner from '../../components/spinner/spinner.component';
-import {
-    selectIsLoading,
-} from "../../store/categories/category.selector";
-
+import Category from '../category/category.component';
+import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
+import { setCategories } from '../../store/categories/category.action';
 
 const Shop = () => {
-    const dispatch = useDispatch();
-    const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchCategoriesStart());
-        // eslint-disable-next-line
-    }, []);
+  useEffect(() => {
+    const getCategoriesMap = async () => {
+      const categoriesArray = await getCategoriesAndDocuments('categories');
+      dispatch(setCategories(categoriesArray));
+    };
 
-    return (
-        <Fragment>
-            {isLoading ? (
-                <Spinner />
-            ) : (
-                <Routes>
-                <Route index element={<CategoriesPreview />} />
-                <Route path=':category' element={<Category />} />
-            </Routes>
-            )}
-        </Fragment>
-    )
-        
+    getCategoriesMap();
+  }, []);
+
+  return (
+    <Routes>
+      <Route index element={<CategoriesPreview />} />
+      <Route path=':category' element={<Category />} />
+    </Routes>
+  );
 };
 
 export default Shop;
