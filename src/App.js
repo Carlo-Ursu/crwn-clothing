@@ -34,6 +34,7 @@ const App = () => {
     });
 
     return unsubscribe;
+    // eslint-disable-next-line
   }, []);
 
   return (

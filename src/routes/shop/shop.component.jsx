@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect, Fragment } from 'react';
 import { useSelector } from "react-redux";
-import { fetchCategoriesStartAsync } from '../../store/categories/category.action';
+import { fetchCategoriesStart } from '../../store/categories/category.action';
 import Spinner from '../../components/spinner/spinner.component';
 import {
     selectIsLoading,
@@ -17,7 +17,7 @@ const Shop = () => {
     const isLoading = useSelector(selectIsLoading);
 
     useEffect(() => {
-        dispatch(fetchCategoriesStartAsync());
+        dispatch(fetchCategoriesStart());
         // eslint-disable-next-line
     }, []);
 
