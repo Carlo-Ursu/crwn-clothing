@@ -20,7 +20,6 @@ const SignInForm = () => {
     } catch (error) {
       console.log('user sign in failed', error);
     }
-
   };
   
   return (
