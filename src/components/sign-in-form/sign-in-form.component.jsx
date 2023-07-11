@@ -1,7 +1,7 @@
-import { ReactComponent as GmailLogo } from "../../assets/google.svg";
-import { useNavigate } from "react-router-dom";
-import { signInWithGooglePopUp } from "../../utils/firebase/firebase.utils";
-import { SignInContainer, ButtonsContainer } from "./sign-in-form.styles";
+import { ReactComponent as GmailLogo } from '../../assets/google.svg';
+import { useNavigate } from 'react-router-dom';
+import { signInWithGooglePopUp } from '../../utils/firebase/firebase.utils';
+import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
 
 const SignInForm = () => {
   const navigation = useNavigate();
@@ -9,9 +9,9 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithGooglePopUp();
-      navigation("/shop");
+      navigation('/shop');
     } catch (error) {
-      console.log("User sign-in failed", error);
+      console.log('User sign-in failed', error);
     }
   };
 
