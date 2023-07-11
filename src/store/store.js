@@ -1,10 +1,10 @@
 // import { compose, createStore, applyMiddleware } from 'redux';
-import { configureStore } from "@reduxjs/toolkit";
-// import { persistStore, persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 
-import { rootReducer } from './root-reducer'; 
+import { rootReducer } from './root-reducer';
 const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
   Boolean
 );
@@ -15,13 +15,13 @@ const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
 //     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
 //   compose;
 
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-//   blacklist: ['user'],
-// };
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart'],
+};
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares));
 
@@ -32,8 +32,8 @@ const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
 // );
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: middleWares
-})
+  reducer: persistedReducer,
+  middleware: middleWares,
+});
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
